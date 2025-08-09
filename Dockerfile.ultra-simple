@@ -1,0 +1,23 @@
+# Ultra simple Dockerfile for deployment issues
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Copy everything
+COPY . .
+
+# Install dependencies
+RUN npm install --legacy-peer-deps
+
+# Build
+RUN npm run build
+
+# Expose port
+EXPOSE 80
+
+# Set environment
+ENV NODE_ENV=production
+ENV PORT=80
+
+# Start
+CMD ["npm", "start"]

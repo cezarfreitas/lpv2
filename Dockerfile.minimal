@@ -1,0 +1,27 @@
+# Minimal Dockerfile for production
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Copy package.json only
+COPY package.json ./
+
+# Install dependencies
+RUN npm install --legacy-peer-deps
+
+# Copy source
+COPY . .
+
+# Set build arg
+ARG VITE_api_form
+ENV VITE_api_form=$VITE_api_form
+
+# Build
+RUN npm run build
+
+# Expose and run
+EXPOSE 3000
+ENV NODE_ENV=production
+ENV PORT=3000
+
+CMD ["node", "dist/server/node-build.mjs"]

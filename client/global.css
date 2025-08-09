@@ -1,0 +1,273 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Performance optimizations */
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Image optimization */
+img {
+  content-visibility: auto;
+}
+
+/* Layout optimization for critical elements */
+.hero-section {
+  contain-intrinsic-size: 100vh;
+}
+
+/* Form validation styles */
+.form-input-valid {
+  @apply border-green-500 focus:ring-green-500;
+}
+
+.form-input-invalid {
+  @apply border-red-500 focus:ring-red-500;
+}
+
+.form-error-message {
+  @apply text-red-500 text-sm mt-1 animate-fade-in;
+}
+
+.form-success-icon {
+  @apply text-green-500;
+}
+
+/* Input focus effects */
+.form-input {
+  transition: all 0.2s ease-in-out;
+}
+
+.form-input:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@layer base {
+  /**
+   * Tailwind CSS theme
+   * tailwind.config.ts expects the following color variables to be expressed as HSL values.
+   * A different format will require also updating the theme in tailwind.config.ts.
+  */
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+
+    --primary: 0 84% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 20%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 20%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 94%;
+    --ring: 0 84% 50%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 20%;
+    --sidebar-primary: 0 84% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 0 0% 20%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: 0 84% 50%;
+  }
+
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 0 84% 60%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 90%;
+
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 0 0% 10%;
+    --accent-foreground: 0 0% 90%;
+
+    --destructive: 0 75% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 0 84% 60%;
+    --sidebar-background: 0 0% 0%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 0 84% 60%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 0 84% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  /* Professional section separators */
+  section:not(:last-child) {
+    position: relative;
+  }
+
+  section:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 100px;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(156, 163, 175, 0.3),
+      transparent
+    );
+    transform: translateX(-50%);
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  /* Prevent horizontal scroll */
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Better touch targets for mobile */
+  button,
+  a[role="button"],
+  input,
+  textarea,
+  select {
+    min-height: 44px;
+  }
+
+  /* Improve text readability on mobile */
+  p,
+  span,
+  div {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  /* Better form inputs - prevent zoom on iOS */
+  input,
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+
+  /* Smooth scrolling for mobile */
+  html {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Disable hover effects on mobile for better performance */
+  .group:hover .group-hover\:scale-110 {
+    transform: none !important;
+  }
+
+  .hover\:scale-105:hover {
+    transform: none !important;
+  }
+
+  /* Better spacing for mobile */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Animação da seta do botão CTA */
+  @keyframes arrow-pulse {
+    0%,
+    100% {
+      transform: translateX(0px);
+    }
+    50% {
+      transform: translateX(4px);
+    }
+  }
+
+  .group:hover .group-hover\:translate-x-1 {
+    animation: arrow-pulse 1s ease-in-out infinite;
+  }
+
+  /* Animação do indicador de scroll */
+  @keyframes scroll-bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+      opacity: 0.8;
+    }
+    50% {
+      transform: translateY(8px);
+      opacity: 1;
+    }
+  }
+
+  .animate-scroll-bounce {
+    animation: scroll-bounce 1.5s ease-in-out infinite;
+  }
+
+  /* Optimize benefit cards for mobile */
+  @media (max-width: 640px) {
+    .grid.grid-cols-1.sm\:grid-cols-2.lg\:grid-cols-4 > div {
+      margin-bottom: 1.5rem;
+    }
+
+    .grid.grid-cols-1.sm\:grid-cols-2.lg\:grid-cols-4 > div h3 {
+      font-size: 1.125rem !important;
+      line-height: 1.4;
+    }
+
+    .grid.grid-cols-1.sm\:grid-cols-2.lg\:grid-cols-4 > div p {
+      font-size: 0.875rem !important;
+      line-height: 1.5;
+    }
+  }
+}
