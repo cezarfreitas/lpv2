@@ -1198,7 +1198,7 @@ export default function Index() {
                 </span>
               </h2>
               <p className="text-gray-600 text-base sm:text-xl max-w-2xl mx-auto px-4">
-                Descubra as coleções oficiais Ecko, com design aut��ntico e
+                Descubra as coleções oficiais Ecko, com design autêntico e
                 qualidade premium. Produtos únicos que valorizam sua loja e
                 encantam seus clientes.
               </p>
